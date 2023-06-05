@@ -1,7 +1,7 @@
 import React from "react";
 import SolutionsRow from "./SolutionsRow";
 
-const CodeThread = () => {
+const CodeThread = ({ title, date, link }) => {
   // will need to make a get request to get all the solutions associated with the thread
   const solutions = [
     {
@@ -27,10 +27,15 @@ const CodeThread = () => {
   ));
 
   return (
-    <div className="thread-container">
-      <h1>Code Challenge Name</h1>
-      <p>Date: 06/01/2023</p>
+    <div
+      className="thread-container"
+      style={{ border: "2px solid black", padding: "2px", margin: "4px" }}
+    >
+      <h1>{title}</h1>
+      <p>Date: {date}</p>
+      <a href={link}>Link to Code Challenge</a>
       {solutionsList}
+      <button>Add Solution</button>
     </div>
   );
 };
