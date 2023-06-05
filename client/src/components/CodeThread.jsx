@@ -6,26 +6,34 @@ const CodeThread = ({ title, date, link }) => {
   const solutions = [
     {
       id: 1,
-      link: "https://replit.com/@scawleyTechtoni/sortMethod",
+      title: "Solution 1",
+      url: "https://replit.com/@scawleyTechtoni/sortMethod",
       username: "Sarah",
+      description: "",
     },
     {
       id: 2,
-      link: "https://replit.com/@YazminTorres1/Code-Challenge-2",
+      title: "Solution 2",
+      url: "https://replit.com/@YazminTorres1/Code-Challenge-2",
       username: "Yazmin",
+      description: "This uses the filter method",
     },
   ];
 
   // will need to create a list of solutions
 
-  const solutionsList = solutions.map((solution) => (
-    <SolutionsRow
-      key={solution.id}
-      solutionId={solution.id}
-      url={solution.url}
-      name={solution.username}
-    />
-  ));
+  const solutionsList = solutions.map((solution) => {
+    return (
+      <SolutionsRow
+        key={solution.id}
+        solutionId={solution.id}
+        url={solution.url}
+        username={solution.username}
+        title={solution.title}
+        description={solution.description}
+      />
+    );
+  });
 
   const comments = [
     {
