@@ -16,6 +16,20 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+--
+-- Name: cc_seq; Type: SEQUENCE; Schema: public; Owner: rubymarroquin
+--
+
+CREATE SEQUENCE public.cc_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.cc_seq OWNER TO rubymarroquin;
+
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
@@ -48,6 +62,48 @@ CREATE TABLE public.main_comments (
 ALTER TABLE public.main_comments OWNER TO rubymarroquin;
 
 --
+-- Name: mc_seq; Type: SEQUENCE; Schema: public; Owner: rubymarroquin
+--
+
+CREATE SEQUENCE public.mc_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.mc_seq OWNER TO rubymarroquin;
+
+--
+-- Name: sc_seq; Type: SEQUENCE; Schema: public; Owner: rubymarroquin
+--
+
+CREATE SEQUENCE public.sc_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.sc_seq OWNER TO rubymarroquin;
+
+--
+-- Name: solution_comments; Type: TABLE; Schema: public; Owner: rubymarroquin
+--
+
+CREATE TABLE public.solution_comments (
+    sc_id integer NOT NULL,
+    solution_id integer,
+    comment text,
+    username text
+);
+
+
+ALTER TABLE public.solution_comments OWNER TO rubymarroquin;
+
+--
 -- Name: solutions; Type: TABLE; Schema: public; Owner: rubymarroquin
 --
 
@@ -62,18 +118,18 @@ CREATE TABLE public.solutions (
 ALTER TABLE public.solutions OWNER TO rubymarroquin;
 
 --
--- Name: solutions_comments; Type: TABLE; Schema: public; Owner: rubymarroquin
+-- Name: solutions_seq; Type: SEQUENCE; Schema: public; Owner: rubymarroquin
 --
 
-CREATE TABLE public.solutions_comments (
-    sc_id integer NOT NULL,
-    solution_id integer,
-    comment text,
-    username text
-);
+CREATE SEQUENCE public.solutions_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
 
 
-ALTER TABLE public.solutions_comments OWNER TO rubymarroquin;
+ALTER TABLE public.solutions_seq OWNER TO rubymarroquin;
 
 --
 -- Data for Name: code_challenge; Type: TABLE DATA; Schema: public; Owner: rubymarroquin
@@ -88,15 +144,43 @@ ALTER TABLE public.solutions_comments OWNER TO rubymarroquin;
 
 
 --
+-- Data for Name: solution_comments; Type: TABLE DATA; Schema: public; Owner: rubymarroquin
+--
+
+
+
+--
 -- Data for Name: solutions; Type: TABLE DATA; Schema: public; Owner: rubymarroquin
 --
 
 
 
 --
--- Data for Name: solutions_comments; Type: TABLE DATA; Schema: public; Owner: rubymarroquin
+-- Name: cc_seq; Type: SEQUENCE SET; Schema: public; Owner: rubymarroquin
 --
 
+SELECT pg_catalog.setval('public.cc_seq', 1, false);
+
+
+--
+-- Name: mc_seq; Type: SEQUENCE SET; Schema: public; Owner: rubymarroquin
+--
+
+SELECT pg_catalog.setval('public.mc_seq', 1, false);
+
+
+--
+-- Name: sc_seq; Type: SEQUENCE SET; Schema: public; Owner: rubymarroquin
+--
+
+SELECT pg_catalog.setval('public.sc_seq', 1, false);
+
+
+--
+-- Name: solutions_seq; Type: SEQUENCE SET; Schema: public; Owner: rubymarroquin
+--
+
+SELECT pg_catalog.setval('public.solutions_seq', 1, false);
 
 
 --
@@ -116,11 +200,11 @@ ALTER TABLE ONLY public.main_comments
 
 
 --
--- Name: solutions_comments solutions_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: rubymarroquin
+-- Name: solution_comments solution_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: rubymarroquin
 --
 
-ALTER TABLE ONLY public.solutions_comments
-    ADD CONSTRAINT solutions_comments_pkey PRIMARY KEY (sc_id);
+ALTER TABLE ONLY public.solution_comments
+    ADD CONSTRAINT solution_comments_pkey PRIMARY KEY (sc_id);
 
 
 --
@@ -140,19 +224,19 @@ ALTER TABLE ONLY public.main_comments
 
 
 --
+-- Name: solution_comments solution_comments_solution_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: rubymarroquin
+--
+
+ALTER TABLE ONLY public.solution_comments
+    ADD CONSTRAINT solution_comments_solution_id_fkey FOREIGN KEY (solution_id) REFERENCES public.solutions(solution_id);
+
+
+--
 -- Name: solutions solutions_code_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: rubymarroquin
 --
 
 ALTER TABLE ONLY public.solutions
     ADD CONSTRAINT solutions_code_id_fkey FOREIGN KEY (code_id) REFERENCES public.code_challenge(code_id);
-
-
---
--- Name: solutions_comments solutions_comments_solution_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: rubymarroquin
---
-
-ALTER TABLE ONLY public.solutions_comments
-    ADD CONSTRAINT solutions_comments_solution_id_fkey FOREIGN KEY (solution_id) REFERENCES public.solutions(solution_id);
 
 
 --
