@@ -37,6 +37,11 @@ const SolutionsRow = ({ url, username, solutionId, title, description }) => {
       <div className="comments-section">
         <p>Comments:</p>
         {commentsList}
+        <div>
+          <label>Add Comment</label>
+          <input />
+          <button type="submit">submit</button>
+        </div>
       </div>
       <hr />
     </div>

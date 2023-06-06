@@ -67,6 +67,11 @@ const CodeThread = ({ title, date, link }) => {
       <div className="comments-section">
         <p>General Comments Section</p>
         {commentsList}
+        <div>
+          <label>Add Comment</label>
+          <input />
+          <button type="submit">submit</button>
+        </div>
       </div>
       <button>Add Solution</button>
     </div>
