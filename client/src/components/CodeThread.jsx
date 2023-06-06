@@ -18,10 +18,16 @@ const CodeThread = ({ id, title, date, link }) => {
   useEffect(() => loadSolutions(), [id]);
 
   return (
-    <div className="thread-container" style={{ margin: "auto" }}>
-      <h2>{title}</h2>
-      <p>{new Date(date).toDateString()}</p>
-      <a href={link}>Link to Code Challenge</a>
+    <div className="thread-container">
+      <div className="thread-header">
+        <div className="header-title">
+          <h2>{title}</h2>
+          <p className="date-posted">{new Date(date).toDateString()}</p>
+        </div>
+        <div className="header-link">
+          <a href={link}>Link to Code Challenge</a>
+        </div>
+      </div>
       <div>
         <h3>Solutions</h3>
         {solutions &&

@@ -16,7 +16,7 @@ const ListChallenges = () => {
   useEffect(() => loadChallenges(), []);
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid" style={{ margin: "10px 0" }}>
       {allChallenges &&
         allChallenges.map((challenge) => {
           return (
