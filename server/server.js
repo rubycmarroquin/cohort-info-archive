@@ -58,7 +58,7 @@ app.get('/api/solutions/:codeId', async (req, res) => {
 app.post('/api/solutions', async (req, res) => {
     try {
 
-        const { codeId, username, link } = req.body; 
+        const { id, username, link } = req.body; 
 
         const result = await db.query(
             `INSERT INTO solutions(solution_id, code_id, username, link) VALUES(nextval('solution_seq'), $1, $2, $3) RETURNING *`,
@@ -88,11 +88,11 @@ app.get('/api/solutions/comments/:id', async (req, res) => {
 app.post('/api/solutions/comments', async (req, res) => {
     try {
 
-        const { solutionId, comment, username } = req.body; 
+        const { id, comment, username } = req.body; 
 
         const result = await db.query(
             `INSERT INTO solution_comments(sc_id, solution_id, comment, username) VALUES(nextval('sc_seq'), $1, $2, $3) RETURNING *`,
-            [solutionId, comment, username],
+            [id, comment, username],
         );
         console.log(result.rows[0]);
         res.json(result.rows[0]);
@@ -117,11 +117,11 @@ app.get('/api/code/comments/:codeId', async (req, res) => {
 app.post('/api/code/comments', async (req, res) => {
     try {
 
-        const { codeId, comment, username } = req.body; 
+        const { id, comment, username } = req.body; 
 
         const result = await db.query(
             `INSERT INTO main_comments(mc_id, code_id, comment, username) VALUES(nextval('mc_seq'), $1, $2, $3) RETURNING *`,
-            [codeId, comment, username],
+            [id, comment, username],
         );
         console.log(result.rows[0]);
         res.json(result.rows[0]);
