@@ -29,7 +29,7 @@ h2 {
   margin: 0;
 }
 
-h3 {
+.solutions-container h3 {
   font-size: 20px;
   font-weight: bold;
 }
@@ -44,4 +44,8 @@ h3 {
   flex-direction: column;
   gap: 10px;
   /* background-color: whitesmoke; */
+}
+
+.comments-section {
+  background-color: lightgray;
 }

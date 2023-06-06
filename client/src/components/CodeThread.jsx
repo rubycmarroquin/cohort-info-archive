@@ -45,10 +45,7 @@ const CodeThread = ({ id, title, date, link }) => {
           })}
       </div>
 
-      <div
-        style={{ backgroundColor: "lightblue" }}
-        className="comments-section"
-      >
+      <div className="comments-section">
         <ListComments category={"main"} id={id} />
       </div>
       <button>Add Solution</button>

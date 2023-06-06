@@ -26,7 +26,8 @@ h4,
 }
 
 .comments-section {
-  background-color: lightgray;
+  /* background-color: lightgray; */
+  /* display: flex; */
 }
 
 .solution-header p {

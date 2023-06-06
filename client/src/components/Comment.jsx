@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import "./comment.css";
 
 const Comment = ({ category, id, refresh }) => {
   const [comment, setComment] = useState({
@@ -56,7 +57,7 @@ const Comment = ({ category, id, refresh }) => {
 
   return (
     <Form className="CommentOutter" onSubmit={handleSubmit}>
-      <h5>{category === "main" ? "Respond to Thread" : "Add comment"}</h5>
+      <h3>{category === "main" ? "Respond to Thread" : "Add comment"}</h3>
       <Form.Group>
         <Form.Label>Enter name: </Form.Label>
         <input
