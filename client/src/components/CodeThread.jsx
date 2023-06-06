@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./codethread.css";
 import SolutionsRow from "./SolutionsRow";
 import ListComments from "./ListComments";
 
@@ -17,17 +18,7 @@ const CodeThread = ({ id, title, date, link }) => {
   useEffect(() => loadSolutions(), [id]);
 
   return (
-    <div
-      className="thread-container"
-      style={{
-        display: "flex",
-        gap: "5px",
-        flexDirection: "column",
-        border: "2px solid black",
-        padding: "2px",
-        margin: "4px",
-      }}
-    >
+    <div className="thread-container" style={{ margin: "auto" }}>
       <h2>{title}</h2>
       <p>{new Date(date).toDateString()}</p>
       <a href={link}>Link to Code Challenge</a>
