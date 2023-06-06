@@ -58,13 +58,23 @@ const CodeThread = ({ title, date, link }) => {
   return (
     <div
       className="thread-container"
-      style={{ border: "2px solid black", padding: "2px", margin: "4px" }}
+      style={{
+        display: "flex",
+        gap: "5px",
+        flexDirection: "column",
+        border: "2px solid black",
+        padding: "2px",
+        margin: "4px",
+      }}
     >
       <h2>{title}</h2>
       <p>Date: {date}</p>
       <a href={link}>Link to Code Challenge</a>
       {solutionsList}
-      <div className="comments-section">
+      <div
+        style={{ backgroundColor: "lightblue" }}
+        className="comments-section"
+      >
         <p>General Comments Section</p>
         {commentsList}
         <div>

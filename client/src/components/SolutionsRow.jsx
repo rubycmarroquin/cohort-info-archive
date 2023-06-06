@@ -19,12 +19,14 @@ const SolutionsRow = ({ url, username, solutionId, title, description }) => {
   // create a commentsList using comments component (Ruby)
 
   const commentsList = comments.map((comment) => (
-    <p key={comment.id}>{comment.description}</p>
+    <ul key={comment.id}>
+      <li>{comment.description}</li>
+    </ul>
   ));
 
   return (
     <div className="solution-row" style={{ backgroundColor: "lightgray" }}>
-      <hr />
+      {/* <hr /> */}
       <div className="header">
         <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
           <h3>
@@ -43,7 +45,7 @@ const SolutionsRow = ({ url, username, solutionId, title, description }) => {
           <button type="submit">submit</button>
         </div>
       </div>
-      <hr />
+      {/* <hr /> */}
     </div>
   );
 };
