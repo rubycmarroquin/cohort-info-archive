@@ -18,12 +18,15 @@ const ListChallenges = () => {
   return (
     allChallenges &&
     allChallenges.map((challenge) => {
-      <CodeThread
-        id={challenge.code_id}
-        title={challenge.title}
-        date={challenge.date}
-        link={challenge.link}
-      />;
+      return (
+        <CodeThread
+          key={`code+${challenge.code_id}`}
+          id={challenge.code_id}
+          title={challenge.title}
+          date={challenge.date}
+          link={challenge.link}
+        />
+      );
     })
   );
 };

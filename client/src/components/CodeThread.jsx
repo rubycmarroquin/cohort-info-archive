@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SolutionsRow from "./SolutionsRow";
 import ListComments from "./ListComments";
 
@@ -29,7 +29,7 @@ const CodeThread = ({ id, title, date, link }) => {
       }}
     >
       <h2>{title}</h2>
-      <p>Date: {date}</p>
+      <p>{new Date(date).toDateString()}</p>
       <a href={link}>Link to Code Challenge</a>
       <div>
         <h3>Solutions</h3>
@@ -37,6 +37,7 @@ const CodeThread = ({ id, title, date, link }) => {
           solutions.map((solution) => {
             return (
               <SolutionsRow
+                key={`solution+${solution.solution_id}`}
                 solutionId={solution.solution_id}
                 link={solution.link}
                 username={solution.username}

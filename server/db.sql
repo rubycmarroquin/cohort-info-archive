@@ -140,6 +140,7 @@ ALTER TABLE public.solutions_seq OWNER TO rubymarroquin;
 
 INSERT INTO public.code_challenge (code_id, title, link, date) VALUES (1, 'Object Practice', 'https://replit.com/@RubyMarroquin1/EthicalUntriedAutomatedinformationsystem', '2023-06-06');
 INSERT INTO public.code_challenge (code_id, title, link, date) VALUES (2, 'Recreate Map', 'https://replit.com/@RubyMarroquin1/Map-Recreate-216', '2023-06-06');
+INSERT INTO public.code_challenge (code_id, title, link, date) VALUES (4, 'Week 3 Code Challenges', 'https://replit.com/@RubyMarroquin1/Week3-Code-Challenges', '2023-04-12');
 
 
 --
@@ -154,6 +155,7 @@ INSERT INTO public.main_comments (mc_id, code_id, comment, username) VALUES (1, 
 --
 
 INSERT INTO public.solution_comments (sc_id, solution_id, comment, username) VALUES (1, 1, 'Can you explain a bit more how you got that solution? Thank you!:)', 'Pandora');
+INSERT INTO public.solution_comments (sc_id, solution_id, comment, username) VALUES (3, 2, 'Why did you decide to use a .map()? Why not a forEach()?', 'Ruby');
 
 
 --
@@ -161,13 +163,14 @@ INSERT INTO public.solution_comments (sc_id, solution_id, comment, username) VAL
 --
 
 INSERT INTO public.solutions (solution_id, code_id, username, link, description, title) VALUES (1, 1, 'Yazmin', 'https://replit.com/@CrissRodriguez/JumboNotableMaps', 'I decided to do this!', 'Solution Using Maps');
+INSERT INTO public.solutions (solution_id, code_id, username, link, description, title) VALUES (2, 1, 'Yolis', 'https://replit.com/@RubyMarroquin1/Week3-Code-Challenges', 'My solutions to code challenges', 'If anyone needs help understanding message me on slack');
 
 
 --
 -- Name: cc_seq; Type: SEQUENCE SET; Schema: public; Owner: rubymarroquin
 --
 
-SELECT pg_catalog.setval('public.cc_seq', 2, true);
+SELECT pg_catalog.setval('public.cc_seq', 4, true);
 
 
 --
@@ -181,14 +184,14 @@ SELECT pg_catalog.setval('public.mc_seq', 1, true);
 -- Name: sc_seq; Type: SEQUENCE SET; Schema: public; Owner: rubymarroquin
 --
 
-SELECT pg_catalog.setval('public.sc_seq', 1, true);
+SELECT pg_catalog.setval('public.sc_seq', 3, true);
 
 
 --
 -- Name: solutions_seq; Type: SEQUENCE SET; Schema: public; Owner: rubymarroquin
 --
 
-SELECT pg_catalog.setval('public.solutions_seq', 1, true);
+SELECT pg_catalog.setval('public.solutions_seq', 2, true);
 
 
 --
