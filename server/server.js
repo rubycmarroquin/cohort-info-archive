@@ -10,33 +10,30 @@ const PORT = process.env.PORT || 8080;
 app.use(cors());
 app.use(express.json());
 
-// creates an endpoint for the route "/""
+// creates an endpoint for the route "/"
 app.get('/', (req, res) => {
     res.json({ message: 'Hola, from My template ExpressJS with React-Vite' });
 });
 
-// create the get request for students in the endpoint '/api/students'
-app.get('/api/students', async (req, res) => {
+/******************* CODE CHALLENGE TABLE  **************************/
+app.get('/api/codechallenge', async (req, res) => {
     try {
-        const { rows: students } = await db.query('SELECT * FROM students');
-        res.send(students);
+        const id = req.params.id;
+        const { rows: code_challenge } = await db.query('SELECT * FROM code_challenge WHERE code_id = $1', [id]);
+        res.send(code_challenge);
     } catch (e) {
         return res.status(400).json({ e });
     }
 });
 
-// create the POST request
-app.post('/api/students', async (req, res) => {
+app.post('/api/codechallenge', async (req, res) => {
     try {
-        const newStudent = {
-            firstname: req.body.firstname,
-            lastname: req.body.lastname,
-            iscurrent: req.body.iscurrent
-        };
-        //console.log([newStudent.firstname, newStudent.lastname, newStudent.iscurrent]);
+
+        const { title, link } = req.body; 
+
         const result = await db.query(
-            'INSERT INTO students(firstname, lastname, is_current) VALUES($1, $2, $3) RETURNING *',
-            [newStudent.firstname, newStudent.lastname, newStudent.iscurrent],
+            `INSERT INTO code_challenges(code_id, title, link) VALUES(nextval('cc_seq'), $1, $2) RETURNING *`,
+            [title, link],
         );
         console.log(result.rows[0]);
         res.json(result.rows[0]);
@@ -45,44 +42,95 @@ app.post('/api/students', async (req, res) => {
         console.log(e);
         return res.status(400).json({ e });
     }
-
 });
 
-// delete request for students
-app.delete('/api/students/:studentId', async (req, res) => {
+/******************* SOLUTIONS TABLE  **************************/
+app.get('/api/solutions/:codeId', async (req, res) => {
     try {
-        const studentId = req.params.studentId;
-        await db.query('DELETE FROM students WHERE id=$1', [studentId]);
-        console.log("From the delete request-url", studentId);
-        res.status(200).end();
+        const id = req.params.codeId;
+        const { rows: solutions } = await db.query('SELECT * FROM solutions WHERE code_id = $1', [id]);
+        res.send(solutions);
+    } catch (e) {
+        return res.status(400).json({ e });
+    }
+});
+
+app.post('/api/solutions', async (req, res) => {
+    try {
+
+        const { codeId, username, link } = req.body; 
+
+        const result = await db.query(
+            `INSERT INTO solutions(solution_id, code_id, username, link) VALUES(nextval('solution_seq'), $1, $2, $3) RETURNING *`,
+            [codeId, username, link],
+        );
+
+        console.log(result.rows[0]);
+        res.json(result.rows[0]);
+
     } catch (e) {
         console.log(e);
         return res.status(400).json({ e });
-
     }
 });
 
-//A put request - Update a student 
-app.put('/api/students/:studentId', async (req, res) =>{
-    //console.log(req.params);
-    //This will be the id that I want to find in the DB - the student to be updated
-    const studentId = req.params.studentId
-    const updatedStudent = { id: req.body.id, firstname: req.body.firstname, lastname: req.body.lastname, iscurrent: req.body.is_current}
-    console.log("In the server from the url - the student id", studentId);
-    console.log("In the server, from the react - the student to be edited", updatedStudent);
-    // UPDATE students SET lastname = "something" WHERE id="16";
-    const query = `UPDATE students SET firstname=$1, lastname=$2, is_current=$3 WHERE id=${studentId} RETURNING *`;
-    const values = [updatedStudent.firstname, updatedStudent.lastname, updatedStudent.iscurrent];
+/******************* SOLUTION COMMENTS TABLE  **************************/
+app.get('/api/solutions/comments/:id', async (req, res) => {
     try {
-      const updated = await db.query(query, values);
-      console.log(updated.rows[0]);
-      res.send(updated.rows[0]);
-  
-    }catch(e){
-      console.log(e);
-      return res.status(400).json({e})
+        const id = req.params.id;
+        const { rows: solutionComments } = await db.query('SELECT * FROM solution_comments WHERE solution_id = $1', [id]);
+        res.send(solutionComments);
+    } catch (e) {
+        return res.status(400).json({ e });
     }
-  })
+});
+
+app.post('/api/solutions/comments', async (req, res) => {
+    try {
+
+        const { solutionId, comment, username } = req.body; 
+
+        const result = await db.query(
+            `INSERT INTO solution_comments(sc_id, solution_id, comment, username) VALUES(nextval('sc_seq'), $1, $2, $3) RETURNING *`,
+            [solutionId, comment, username],
+        );
+        console.log(result.rows[0]);
+        res.json(result.rows[0]);
+
+    } catch (e) {
+        console.log(e);
+        return res.status(400).json({ e });
+    }
+});
+
+/******************* MAIN COMMENTS TABLE  **************************/
+app.get('/api/code/comments/:codeId', async (req, res) => {
+    try {
+        const id = req.params.codeId;
+        const { rows: mainComments } = await db.query('SELECT * FROM main_comments WHERE code_id = $1', [id]);
+        res.send(mainComments);
+    } catch (e) {
+        return res.status(400).json({ e });
+    }
+});
+
+app.post('/api/code/comments', async (req, res) => {
+    try {
+
+        const { codeId, comment, username } = req.body; 
+
+        const result = await db.query(
+            `INSERT INTO main_comments(mc_id, code_id, comment, username) VALUES(nextval('mc_seq'), $1, $2, $3) RETURNING *`,
+            [codeId, comment, username],
+        );
+        console.log(result.rows[0]);
+        res.json(result.rows[0]);
+
+    } catch (e) {
+        console.log(e);
+        return res.status(400).json({ e });
+    }
+});
 
 // console.log that your server is up and running
 app.listen(PORT, () => {
