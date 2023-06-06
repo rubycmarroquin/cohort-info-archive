@@ -27,9 +27,9 @@ const SolutionsRow = ({ url, username, solutionId, title, description }) => {
       <hr />
       <div className="header">
         <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-          <h2>
+          <h3>
             <a href={url}>{title}</a>
-          </h2>
+          </h3>
           <p style={{ fontWeight: "bold" }}>{username}</p>
         </div>
         <p>{description}</p>

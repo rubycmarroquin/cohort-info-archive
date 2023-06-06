@@ -60,7 +60,7 @@ const CodeThread = ({ title, date, link }) => {
       className="thread-container"
       style={{ border: "2px solid black", padding: "2px", margin: "4px" }}
     >
-      <h1>{title}</h1>
+      <h2>{title}</h2>
       <p>Date: {date}</p>
       <a href={link}>Link to Code Challenge</a>
       {solutionsList}
