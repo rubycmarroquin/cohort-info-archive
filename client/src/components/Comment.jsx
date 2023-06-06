@@ -17,7 +17,6 @@ const Comment = ({ category, id, refresh }) => {
   };
 
   const handleFormChange = (field, value) => {
-    console.log(value);
     setComment((comment) => ({ ...comment, [field]: value }));
   };
 
@@ -26,15 +25,18 @@ const Comment = ({ category, id, refresh }) => {
 
     let url = "";
 
+    // set URL depending on category type
     if (category === "main") {
       url = "/api/code/comments";
     } else {
       url = "/api/solutions/comments";
     }
 
+    // make post request to database
     await apiCall(url);
 
-    refresh();
+    // pass in the category type to re-render comments
+    refresh(category);
   };
 
   //A function to handle the post request to comments table in db

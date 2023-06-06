@@ -5,18 +5,23 @@ const ListComments = ({ category, id }) => {
   const [allComments, setAllComments] = useState(null);
 
   // make get request to get all comments associated with the id
-  const loadComments = (url) => {
+  const loadComments = (type) => {
+    // set url according to comments section type
+    let url =
+      type === "main"
+        ? `/api/code/comments/${id}`
+        : `/api/solutions/comments/${id}`;
+
     fetch(`http://localhost:8080${url}`)
       .then((response) => response.json())
-      .then((students) => {
-        setAllComments(students);
+      .then((comments) => {
+        setAllComments(comments);
       });
   };
 
   useEffect(() => {
-    // checks to see if the category is main or a solution comments section
-    if (category === "main") loadComments(`/api/code/comments/${id}`);
-    else loadComments(`/api/solutions/comments/${id}`);
+    // wait for category to render, then call loadComments()
+    if (category) loadComments(category);
   }, [category]);
 
   return (
