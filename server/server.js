@@ -18,8 +18,8 @@ app.get('/', (req, res) => {
 /******************* CODE CHALLENGE TABLE  **************************/
 app.get('/api/codechallenge', async (req, res) => {
     try {
-        const id = req.params.id;
-        const { rows: code_challenge } = await db.query('SELECT * FROM code_challenge WHERE code_id = $1', [id]);
+        const { rows: code_challenge } = await db.query('SELECT * FROM code_challenge');
+        console.log(code_challenge);
         res.send(code_challenge);
     } catch (e) {
         return res.status(400).json({ e });
