@@ -1,0 +1,35 @@
+h4,
+.solution-title a {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.solution-row {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  /* border-bottom: 1px solid black; */
+}
+
+.solution-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background-color: whitesmoke;
+}
+
+.solution-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.comments-section {
+  background-color: lightgray;
+}
+
+.solution-header p {
+  font-size: 16px;
+  margin: 0;
+}

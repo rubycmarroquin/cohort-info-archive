@@ -28,7 +28,7 @@ const CodeThread = ({ id, title, date, link }) => {
           <a href={link}>Link to Code Challenge</a>
         </div>
       </div>
-      <div>
+      <div className="solutions-container">
         <h3>Solutions</h3>
         {solutions &&
           solutions.map((solution) => {
