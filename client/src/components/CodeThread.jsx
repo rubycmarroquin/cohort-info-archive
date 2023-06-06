@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./codethread.css";
 import SolutionsRow from "./SolutionsRow";
 import ListComments from "./ListComments";
 
@@ -17,21 +18,17 @@ const CodeThread = ({ id, title, date, link }) => {
   useEffect(() => loadSolutions(), [id]);
 
   return (
-    <div
-      className="thread-container"
-      style={{
-        display: "flex",
-        gap: "5px",
-        flexDirection: "column",
-        border: "2px solid black",
-        padding: "2px",
-        margin: "4px",
-      }}
-    >
-      <h2>{title}</h2>
-      <p>{new Date(date).toDateString()}</p>
-      <a href={link}>Link to Code Challenge</a>
-      <div>
+    <div className="thread-container">
+      <div className="thread-header">
+        <div className="header-title">
+          <h2>{title}</h2>
+          <p className="date-posted">{new Date(date).toDateString()}</p>
+        </div>
+        <div className="header-link">
+          <a href={link}>Link to Code Challenge</a>
+        </div>
+      </div>
+      <div className="solutions-container">
         <h3>Solutions</h3>
         {solutions &&
           solutions.map((solution) => {
@@ -48,10 +45,7 @@ const CodeThread = ({ id, title, date, link }) => {
           })}
       </div>
 
-      <div
-        style={{ backgroundColor: "lightblue" }}
-        className="comments-section"
-      >
+      <div className="comments-section">
         <ListComments category={"main"} id={id} />
       </div>
       <button>Add Solution</button>

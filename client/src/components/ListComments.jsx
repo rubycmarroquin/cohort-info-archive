@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Comment from "./Comment";
+import "./listcomments.css";
 
 const ListComments = ({ category, id }) => {
   const [allComments, setAllComments] = useState(null);
@@ -27,7 +28,7 @@ const ListComments = ({ category, id }) => {
   return (
     allComments && (
       <div className="list-comments">
-        <h5>{category === "main" ? "Responses" : "Comments"}</h5>
+        <h3>{category === "main" ? "Responses" : "Comments"}</h3>
         {allComments.map((comment, index) => {
           return (
             <p key={`${comment.username}+${index}`}>

@@ -16,18 +16,20 @@ const ListChallenges = () => {
   useEffect(() => loadChallenges(), []);
 
   return (
-    allChallenges &&
-    allChallenges.map((challenge) => {
-      return (
-        <CodeThread
-          key={`code+${challenge.code_id}`}
-          id={challenge.code_id}
-          title={challenge.title}
-          date={challenge.date}
-          link={challenge.link}
-        />
-      );
-    })
+    <div className="container-fluid" style={{ margin: "10px 0" }}>
+      {allChallenges &&
+        allChallenges.map((challenge) => {
+          return (
+            <CodeThread
+              key={`code+${challenge.code_id}`}
+              id={challenge.code_id}
+              title={challenge.title}
+              date={challenge.date}
+              link={challenge.link}
+            />
+          );
+        })}
+    </div>
   );
 };
 
