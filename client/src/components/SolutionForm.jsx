@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-const SolutionForm = () => {
-  const [id, setId] = useState("");
+const SolutionForm = ({ id }) => {
   const [username, setUsername] = useState("");
   const [link, setLink] = useState("");
 
