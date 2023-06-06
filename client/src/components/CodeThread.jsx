@@ -1,59 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import SolutionsRow from "./SolutionsRow";
+import ListComments from "./ListComments";
 
-const CodeThread = ({ title, date, link }) => {
-  // will need to make a get request to get all the solutions associated with the thread
-  const solutions = [
-    {
-      id: 1,
-      title: "Solution 1",
-      url: "https://replit.com/@scawleyTechtoni/sortMethod",
-      username: "Sarah",
-      description: "",
-    },
-    {
-      id: 2,
-      title: "Solution 2",
-      url: "https://replit.com/@YazminTorres1/Code-Challenge-2",
-      username: "Yazmin",
-      description: "This uses the filter method",
-    },
-  ];
+const CodeThread = ({ id, title, date, link }) => {
+  const [solutions, setSolutions] = useState(null);
 
-  // will need to create a list of solutions
+  // get request to get all the solutions associated with the thread
+  const loadSolutions = () => {
+    fetch(`http://localhost:8080/api/solutions/${id}`)
+      .then((response) => response.json())
+      .then((solutions) => {
+        setSolutions(solutions);
+      });
+  };
 
-  const solutionsList = solutions.map((solution) => {
-    return (
-      <SolutionsRow
-        key={solution.id}
-        solutionId={solution.id}
-        url={solution.url}
-        username={solution.username}
-        title={solution.title}
-        description={solution.description}
-      />
-    );
-  });
-
-  const comments = [
-    {
-      id: 1,
-      username: "Yazmin",
-      description: "This is a really good challenge!",
-    },
-    {
-      id: 2,
-      username: "Pandora",
-      description: "is this the type of challenge we can expect in interviews?",
-    },
-  ];
-
-  // will need to make a get request to get all the general comments associated with the main thread
-  // create a commentsList using comments component (Ruby)
-
-  const commentsList = comments.map((comment) => (
-    <p key={comment.id}>{comment.description}</p>
-  ));
+  useEffect(() => loadSolutions(), [id]);
 
   return (
     <div
@@ -70,18 +31,27 @@ const CodeThread = ({ title, date, link }) => {
       <h2>{title}</h2>
       <p>Date: {date}</p>
       <a href={link}>Link to Code Challenge</a>
-      {solutionsList}
+      <div>
+        <h3>Solutions</h3>
+        {solutions &&
+          solutions.map((solution) => {
+            return (
+              <SolutionsRow
+                solutionId={solution.solution_id}
+                link={solution.link}
+                username={solution.username}
+                title={solution.title}
+                description={solution.description}
+              />
+            );
+          })}
+      </div>
+
       <div
         style={{ backgroundColor: "lightblue" }}
         className="comments-section"
       >
-        <p>General Comments Section</p>
-        {commentsList}
-        <div>
-          <label>Add Comment</label>
-          <input />
-          <button type="submit">submit</button>
-        </div>
+        <ListComments category={"main"} id={id} />
       </div>
       <button>Add Solution</button>
     </div>

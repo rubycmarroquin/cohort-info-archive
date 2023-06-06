@@ -29,11 +29,12 @@ app.get('/api/codechallenge', async (req, res) => {
 app.post('/api/codechallenge', async (req, res) => {
     try {
 
-        const { title, link } = req.body; 
+        const { title, link, date } = req.body; 
+        if(!date) date = 'NOW()';
 
         const result = await db.query(
-            `INSERT INTO code_challenges(code_id, title, link) VALUES(nextval('cc_seq'), $1, $2) RETURNING *`,
-            [title, link],
+            `INSERT INTO code_challenge(code_id, title, link, date) VALUES(nextval('cc_seq'), $1, $2, $3) RETURNING *`,
+            [title, link, date],
         );
         console.log(result.rows[0]);
         res.json(result.rows[0]);

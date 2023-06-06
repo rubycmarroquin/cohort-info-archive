@@ -1,51 +1,23 @@
 import React from "react";
+import ListComments from "./ListComments";
 
-const SolutionsRow = ({ url, username, solutionId, title, description }) => {
-  const comments = [
-    {
-      id: 1,
-      username: "Yazmin",
-      description: "Why did you decided to use for instead of while loop?",
-    },
-    {
-      id: 2,
-      username: "Ruby",
-      description:
-        "Can you explain why we needed to use the spread operator here?",
-    },
-  ];
-
-  // will need to make a get requests to get all the comments associated with a specific solution
-  // create a commentsList using comments component (Ruby)
-
-  const commentsList = comments.map((comment) => (
-    <ul key={comment.id}>
-      <li>{comment.description}</li>
-    </ul>
-  ));
-
+const SolutionsRow = ({ link, username, solutionId, title, description }) => {
   return (
     <div className="solution-row" style={{ backgroundColor: "lightgray" }}>
-      {/* <hr /> */}
       <div className="header">
         <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
           <h3>
-            <a href={url}>{title}</a>
+            <a href={link}>{title}</a>
           </h3>
           <p style={{ fontWeight: "bold" }}>{username}</p>
         </div>
-        <p>{description}</p>
+        <p>
+          <strong>Description:</strong> {description}
+        </p>
       </div>
       <div className="comments-section">
-        <p>Comments:</p>
-        {commentsList}
-        <div>
-          <label>Add Comment</label>
-          <input />
-          <button type="submit">submit</button>
-        </div>
+        <ListComments category={"solution"} id={solutionId} />
       </div>
-      {/* <hr /> */}
     </div>
   );
 };
