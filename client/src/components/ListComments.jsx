@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Comment from "./Comment";
-import { Accordion, Icon } from "semantic-ui-react";
+import "./listcomments.css";
 
 const ListComments = ({ category, id }) => {
   const [allComments, setAllComments] = useState(null);
-  const [activeIndex, setActiveIndex] = useState(null);
 
   // make get request to get all comments associated with the id
   const loadComments = (type) => {
@@ -26,31 +25,30 @@ const ListComments = ({ category, id }) => {
     if (category) loadComments(category);
   }, [category]);
 
-  const handleClick = (index) => {
-    setActiveIndex(activeIndex === index ? null : index);
-  };
-
   return (
     allComments && (
       <div className="list-comments">
-        <h5>{category === "main" ? "Responses" : "Comments"}</h5>
-        <Accordion styled>
-          {allComments.map((comment, index) => (
-            <React.Fragment key={`${comment.username}+${index}`}>
-              <Accordion.Title
-                active={activeIndex === index}
-                index={index}
-                onClick={() => handleClick(index)}
-              >
-                <Icon name="dropdown" />
-                <strong>{comment.username}</strong>
-              </Accordion.Title>
-              <Accordion.Content active={activeIndex === index}>
-                <p>{comment.comment}</p>
-              </Accordion.Content>
-            </React.Fragment>
-          ))}
-        </Accordion>
+        <div className="comments-container">
+          <h3
+            className={
+              category === "main" ? "main-thread" : "comment-thread-sec"
+            }
+          >
+            {category === "main" ? "Main Thread" : "Comments"}
+          </h3>
+          <div className="comments">
+            {allComments.map((comment, index) => {
+              return (
+                <p
+                  className="comment-item"
+                  key={`${comment.username}+${index}`}
+                >
+                  <strong>{comment.username}</strong>: {comment.comment}
+                </p>
+              );
+            })}
+          </div>
+        </div>
         <Comment category={category} id={id} refresh={loadComments} />
       </div>
     )
