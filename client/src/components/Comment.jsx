@@ -57,7 +57,7 @@ const Comment = ({ category, id, refresh }) => {
 
   return (
     <Form className="comment-form" onSubmit={handleSubmit}>
-      <h3>{category === "main" ? "Respond to Thread" : "Add comment"}</h3>
+      <h3>{category === "main" ? "Add to Thread" : "Add comment"}</h3>
       <Form.Group>
         {/* <Form.Label>Enter name: </Form.Label> */}
         <input
