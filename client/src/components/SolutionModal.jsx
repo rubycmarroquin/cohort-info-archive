@@ -13,7 +13,11 @@ const SolutionModal = ({ loadSolutions, id }) => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button
+        style={{ margin: "0", marginBottom: "4px" }}
+        variant="primary"
+        onClick={handleShow}
+      >
         <FontAwesomeIcon icon={faPlus} /> Add Solution
       </Button>
       <Modal show={show} onHide={handleClose}>

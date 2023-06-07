@@ -79,7 +79,11 @@ const Comment = ({ category, id, refresh }) => {
           onChange={(e) => handleFormChange("content", e.target.value)}
         />
       </Form.Group>
-      <Button type="submit" className="btn-comment">
+      <Button
+        type="submit"
+        className="btn-comment"
+        style={{ marginBottom: "4px" }}
+      >
         {category === "main" ? "Respond to Thread" : "Add Comment"}
       </Button>
     </Form>
