@@ -34,7 +34,7 @@ const SolutionForm = ({ handleClose, loadSolutions, id }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{ marginTop: "0" }}>
       <label>
         Username:
         <input
@@ -44,7 +44,7 @@ const SolutionForm = ({ handleClose, loadSolutions, id }) => {
           required
         />
       </label>
-      <br />
+      {/* <br />
       <label>
         Title:
         <input
@@ -53,7 +53,7 @@ const SolutionForm = ({ handleClose, loadSolutions, id }) => {
           onChange={(e) => setTitle(e.target.value)}
           required
         />
-      </label>
+      </label> */}
       <br />
       <label>
         Link:
