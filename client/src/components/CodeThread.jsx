@@ -21,35 +21,39 @@ const CodeThread = ({ id, title, date, link }) => {
   return (
     <div className="thread-container">
       <div className="thread-header">
-        <div className="header-title">
-          <h2>{title}</h2>
-          <p className="date-posted">{new Date(date).toDateString()}</p>
-        </div>
-        <div className="header-link">
-          <a href={link}>Link to Code Challenge</a>
+        <div className="content">
+          <div className="header-title">
+            <h2>{title}</h2>
+            <p className="date-posted">{new Date(date).toDateString()}</p>
+          </div>
+          <div className="header-link">
+            <a href={link}>Link to Code Challenge</a>
+          </div>
         </div>
       </div>
       <div className="solutions-container">
         <h3>Solutions</h3>
-        {solutions &&
-          solutions.map((solution) => {
-            return (
-              <SolutionsRow
-                key={`solution+${solution.solution_id}`}
-                solutionId={solution.solution_id}
-                link={solution.link}
-                username={solution.username}
-                title={solution.title}
-                description={solution.description}
-              />
-            );
-          })}
+        <div className="solutions">
+          {solutions &&
+            solutions.map((solution) => {
+              return (
+                <SolutionsRow
+                  key={`solution+${solution.solution_id}`}
+                  solutionId={solution.solution_id}
+                  link={solution.link}
+                  username={solution.username}
+                  title={solution.title}
+                  description={solution.description}
+                />
+              );
+            })}
+        </div>
       </div>
 
       <div className="comments-section">
         <ListComments category={"main"} id={id} />
       </div>
-      <div className="solutions-seciton">
+      <div className="solutions-section">
         <SolutionModal id={id} loadSolutions={loadSolutions} />
       </div>
     </div>

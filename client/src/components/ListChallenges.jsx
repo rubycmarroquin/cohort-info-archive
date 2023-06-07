@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CodeThread from "./CodeThread";
 import CCModal from "./CCModal";
+import "./listchallenges.css";
 
 const ListChallenges = () => {
   const [allChallenges, setAllChallenges] = useState(null);
@@ -17,22 +18,24 @@ const ListChallenges = () => {
   useEffect(() => loadChallenges(), []);
 
   return (
-    <div className="container-fluid" style={{ margin: "10px 0" }}>
+    <div className="container-fluid">
       <div>
         <CCModal loadChallenges={loadChallenges} />
       </div>
-      {allChallenges &&
-        allChallenges.map((challenge) => {
-          return (
-            <CodeThread
-              key={`code+${challenge.code_id}`}
-              id={challenge.code_id}
-              title={challenge.title}
-              date={challenge.date}
-              link={challenge.link}
-            />
-          );
-        })}
+      <div className="all-threads">
+        {allChallenges &&
+          allChallenges.map((challenge) => {
+            return (
+              <CodeThread
+                key={`code+${challenge.code_id}`}
+                id={challenge.code_id}
+                title={challenge.title}
+                date={challenge.date}
+                link={challenge.link}
+              />
+            );
+          })}
+      </div>
     </div>
   );
 };

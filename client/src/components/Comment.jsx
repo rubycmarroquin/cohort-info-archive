@@ -56,10 +56,10 @@ const Comment = ({ category, id, refresh }) => {
   };
 
   return (
-    <Form className="CommentOutter" onSubmit={handleSubmit}>
+    <Form className="comment-form" onSubmit={handleSubmit}>
       <h3>{category === "main" ? "Respond to Thread" : "Add comment"}</h3>
       <Form.Group>
-        <Form.Label>Enter name: </Form.Label>
+        {/* <Form.Label>Enter name: </Form.Label> */}
         <input
           type="text"
           name="username"
@@ -79,7 +79,11 @@ const Comment = ({ category, id, refresh }) => {
           onChange={(e) => handleFormChange("content", e.target.value)}
         />
       </Form.Group>
-      <Button style={{ marginBottom: "25px" }} type="submit">
+      <Button
+        type="submit"
+        className="btn-comment"
+        style={{ marginBottom: "4px" }}
+      >
         {category === "main" ? "Respond to Thread" : "Add Comment"}
       </Button>
     </Form>

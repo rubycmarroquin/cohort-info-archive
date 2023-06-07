@@ -1,21 +1,35 @@
 h4,
 .solution-title a {
   font-size: 18px;
-  font-weight: bold;
+  /* font-weight: bold; */
   margin: 0;
 }
 
 .solution-row {
+  /* display: flex;
+  flex-direction: column;
+  gap: 5px; */
+  /* border-top: 2px solid black; */
+  border-bottom: 2px solid black;
+  /* background-color: whitesmoke; */
+}
+
+.solution-content {
+  /* width: 95%;
+  margin: auto; */
   display: flex;
   flex-direction: column;
   gap: 5px;
-  /* border-bottom: 1px solid black; */
 }
 
 .solution-header {
   display: flex;
   flex-direction: column;
   gap: 1px;
+  padding-bottom: 4px;
+  border-bottom: 1px dotted black;
+  width: 95%;
+  margin: auto;
   background-color: whitesmoke;
 }
 
@@ -26,7 +40,7 @@ h4,
 }
 
 .comments-section {
-  /* background-color: lightgray; */
+  /* background-color: lightblue; */
   /* display: flex; */
 }
 

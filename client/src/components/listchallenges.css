@@ -1,0 +1,12 @@
+.all-threads {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.container-fluid {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
