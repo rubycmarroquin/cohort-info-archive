@@ -28,15 +28,20 @@ const ListComments = ({ category, id }) => {
   return (
     allComments && (
       <div className="list-comments">
-        <h3>{category === "main" ? "Responses" : "Comments"}</h3>
-        {allComments.map((comment, index) => {
-          return (
-            <p key={`${comment.username}+${index}`}>
-              <strong>{comment.username}</strong>: {comment.comment}
-            </p>
-          );
-        })}
+        <div className="comments-container">
+          <h3>{category === "main" ? "Responses" : "Comments"}</h3>
+          <div className="comments">
+            {allComments.map((comment, index) => {
+              return (
+                <p key={`${comment.username}+${index}`}>
+                  <strong>{comment.username}</strong>: {comment.comment}
+                </p>
+              );
+            })}
+          </div>
+        </div>
 
+        {/* form */}
         <Comment category={category} id={id} refresh={loadComments} />
       </div>
     )
