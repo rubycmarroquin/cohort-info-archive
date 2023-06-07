@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 /******************* CODE CHALLENGE TABLE  **************************/
 app.get('/api/codechallenge', async (req, res) => {
     try {
-        const { rows: code_challenge } = await db.query('SELECT * FROM code_challenge');
+        const { rows: code_challenge } = await db.query('SELECT * FROM code_challenge ORDER BY date DESC');
         console.log(code_challenge);
         res.send(code_challenge);
     } catch (e) {
@@ -59,11 +59,11 @@ app.get('/api/solutions/:codeId', async (req, res) => {
 app.post('/api/solutions', async (req, res) => {
     try {
 
-        const { id, username, link } = req.body; 
+        const { id, username, link, description, title } = req.body; 
 
         const result = await db.query(
-            `INSERT INTO solutions(solution_id, code_id, username, link) VALUES(nextval('solution_seq'), $1, $2, $3) RETURNING *`,
-            [id, username, link],
+            `INSERT INTO solutions(solution_id, code_id, username, link, description, title) VALUES(nextval('solutions_seq'), $1, $2, $3, $4, $5) RETURNING *`,
+            [id, username, link, description, title],
         );
 
         console.log(result.rows[0]);

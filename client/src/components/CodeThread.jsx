@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./codethread.css";
 import SolutionsRow from "./SolutionsRow";
 import ListComments from "./ListComments";
+import SolutionModal from "./SolutionModal";
 
 const CodeThread = ({ id, title, date, link }) => {
   const [solutions, setSolutions] = useState(null);
@@ -48,7 +49,9 @@ const CodeThread = ({ id, title, date, link }) => {
       <div className="comments-section">
         <ListComments category={"main"} id={id} />
       </div>
-      <button>Add Solution</button>
+      <div className="solutions-seciton">
+        <SolutionModal id={id} loadSolutions={loadSolutions} />
+      </div>
     </div>
   );
 };

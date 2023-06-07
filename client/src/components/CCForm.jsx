@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const CodeChallengeForm = () => {
+const CodeChallengeForm = ({ loadChallenges, handleClose }) => {
   const [title, setTitle] = useState("");
   const [link, setLink] = useState("");
   const [date, setDate] = useState("");
@@ -9,7 +9,7 @@ const CodeChallengeForm = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("/api/codechallenge", {
+      const response = await fetch("http://localhost:8080/api/codechallenge", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -21,6 +21,8 @@ const CodeChallengeForm = () => {
         const data = await response.json();
         console.log(data);
         // Handle success or display a success message
+        loadChallenges();
+        handleClose();
       } else {
         throw new Error("Request failed");
       }
@@ -38,6 +40,7 @@ const CodeChallengeForm = () => {
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          required
         />
       </label>
       <br />
@@ -47,15 +50,17 @@ const CodeChallengeForm = () => {
           type="text"
           value={link}
           onChange={(e) => setLink(e.target.value)}
+          required
         />
       </label>
       <br />
       <label>
         Date:
         <input
-          type="text"
+          type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
+          required
         />
       </label>
       <br />

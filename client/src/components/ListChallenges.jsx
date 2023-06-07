@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CodeThread from "./CodeThread";
+import CCModal from "./CCModal";
 
 const ListChallenges = () => {
   const [allChallenges, setAllChallenges] = useState(null);
@@ -17,6 +18,9 @@ const ListChallenges = () => {
 
   return (
     <div className="container-fluid" style={{ margin: "10px 0" }}>
+      <div>
+        <CCModal loadChallenges={loadChallenges} />
+      </div>
       {allChallenges &&
         allChallenges.map((challenge) => {
           return (
