@@ -13,7 +13,11 @@ const CCModal = ({ loadChallenges }) => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button
+        variant="primary"
+        onClick={handleShow}
+        className="add-challenge-modal"
+      >
         <FontAwesomeIcon icon={faPlus} /> Add Code Challenge
       </Button>
       <Modal show={show} onHide={handleClose}>
