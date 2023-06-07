@@ -21,9 +21,9 @@ const CodeThread = ({ id, title, date, link }) => {
   return (
     <div className="thread-container">
       <div className="thread-header">
-        <div className="content">
+        <div>
           <div className="header-title">
-            <h2>{title}</h2>
+            <h1>{title}</h1>
             <p className="date-posted">{new Date(date).toDateString()}</p>
           </div>
           <div className="header-link">
@@ -32,7 +32,6 @@ const CodeThread = ({ id, title, date, link }) => {
         </div>
       </div>
       <div className="solutions-container">
-        <h3>Solutions</h3>
         <div className="solutions">
           {solutions &&
             solutions.map((solution) => {
@@ -50,7 +49,7 @@ const CodeThread = ({ id, title, date, link }) => {
         </div>
       </div>
 
-      <div className="comments-section">
+      <div className="comments-section display-thread">
         <ListComments category={"main"} id={id} />
       </div>
       <div className="solutions-section">
