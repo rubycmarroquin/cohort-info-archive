@@ -11,7 +11,7 @@ h4,
   gap: 5px; */
   /* border-top: 2px solid black; */
   border-bottom: 2px solid black;
-  background-color: whitesmoke;
+  /* background-color: whitesmoke; */
 }
 
 .solution-content {
@@ -30,7 +30,7 @@ h4,
   border-bottom: 1px dotted black;
   width: 95%;
   margin: auto;
-  /* background-color: whitesmoke; */
+  background-color: whitesmoke;
 }
 
 .solution-title {
@@ -40,7 +40,7 @@ h4,
 }
 
 .comments-section {
-  /* background-color: lightgray; */
+  /* background-color: lightblue; */
   /* display: flex; */
 }
 
