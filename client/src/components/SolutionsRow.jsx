@@ -8,7 +8,7 @@ const SolutionsRow = ({ link, username, solutionId, title, description }) => {
       <div className="solution-content">
         <div className="solution-header">
           <div className="solution-title">
-            <a href={link}>{title}</a>
+            <a href={link}>Solution Link</a>
             <h4>{username}</h4>
           </div>
           <p>Description: {description}</p>
