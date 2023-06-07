@@ -1,6 +1,5 @@
 .list-comments h3 {
   font-size: 18px;
-  /* font-weight: bold; */
   margin: 0;
 }
 
@@ -22,7 +21,29 @@
   flex-direction: column;
   gap: 5px;
   padding-bottom: 4px;
-  border-bottom: 1px dotted black;
-  /* width: 95%;
-  margin: auto; */
+  /* padding: 1%; */
+  
+}
+
+.comments {
+  padding-left: 10px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  padding: 1%;
+  /* background-color: rgb(33, 37, 41); */
+    background-color: rgba(33, 37, 41, 0.919);
+    /* background-color: rgba(210, 215, 216, 0.408); */
+    /* background-color: #0093b5; */
+}
+
+.comment-item > strong{
+  color: #0093b5
+}
+
+.comment-item {
+  color: white
+}
+
+.main-thread {
+    color: #0093b5;
 }
