@@ -80,7 +80,7 @@ const Comment = ({ category, id, refresh }) => {
         />
       </Form.Group>
       <Button style={{ marginBottom: "25px" }} type="submit">
-        Post Comment
+        {category === "main" ? "Respond to Thread" : "Add Comment"}
       </Button>
     </Form>
   );
