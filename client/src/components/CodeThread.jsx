@@ -53,7 +53,7 @@ const CodeThread = ({ id, title, date, link }) => {
       <div className="comments-section">
         <ListComments category={"main"} id={id} />
       </div>
-      <div className="solutions-seciton">
+      <div className="solutions-section">
         <SolutionModal id={id} loadSolutions={loadSolutions} />
       </div>
     </div>

@@ -50,12 +50,13 @@ h2 {
   flex-direction: column;
 }
 
-.comments-section {
-  /* background-color: lightgray; */
-}
-
 .solutions {
   display: flex;
   flex-direction: column;
   gap: 5px;
+}
+
+.solutions-section {
+  width: 95%;
+  margin: auto;
 }

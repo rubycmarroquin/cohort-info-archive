@@ -29,7 +29,7 @@ const ListComments = ({ category, id }) => {
     allComments && (
       <div className="list-comments">
         <div className="comments-container">
-          <h3>{category === "main" ? "Responses" : "Comments"}</h3>
+          <h3>{category === "main" ? "General Comments" : "Comments"}</h3>
           <div className="comments">
             {allComments.map((comment, index) => {
               return (

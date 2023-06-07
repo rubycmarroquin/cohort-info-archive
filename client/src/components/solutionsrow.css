@@ -15,8 +15,8 @@ h4,
 }
 
 .solution-content {
-  width: 95%;
-  margin: auto;
+  /* width: 95%;
+  margin: auto; */
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -28,6 +28,8 @@ h4,
   gap: 1px;
   padding-bottom: 4px;
   border-bottom: 1px dotted black;
+  width: 95%;
+  margin: auto;
   /* background-color: whitesmoke; */
 }
 
