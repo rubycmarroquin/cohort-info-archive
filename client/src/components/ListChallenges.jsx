@@ -19,7 +19,7 @@ const ListChallenges = () => {
 
   return (
     <div className="container-fluid">
-      <div>
+      <div className="cc-modal">
         <CCModal loadChallenges={loadChallenges} />
       </div>
       <div className="all-threads">

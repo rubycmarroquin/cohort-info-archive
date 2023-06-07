@@ -2,14 +2,20 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  border: 4px solid black;
-  /* padding: 5px; */
+  padding: 2%;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  margin: 1%;
+  border-radius: 10px;
+  /* background-color: rgba(6, 181, 212, 0.388); */
+  background-color: rgb(33,37,41);
+  margin-bottom: 2%;
 }
 
 .thread-header {
-  background-color: rgb(6 182 212);
   display: flex;
   flex-direction: column;
+  border-radius: 20px;
+  padding: .75%;
   gap: 5px;
 }
 
@@ -22,10 +28,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* color: #05556d */
+  color: #0093b5;
 }
 
 .header-link a {
-  color: black;
+  color: whitesmoke;
 }
 
 h2 {
@@ -48,7 +56,6 @@ h2 {
 .solutions-container {
   display: flex;
   flex-direction: column;
-  /* background-color: pink; */
 }
 
 .solutions {
@@ -58,6 +65,26 @@ h2 {
 }
 
 .solutions-section {
-  width: 95%;
-  margin: 0 auto;
+  /* width: 95%; */
+  margin: auto auto;
+}
+
+.cc-modal {
+  display: flex;
+  flex-flow: row-reverse;
+  margin-right: 1%;
+}
+
+.solutions-modal-button {
+  width: 200%;
+}
+
+.add-challenge-modal {
+
+}
+
+.add-challenge-modal, .solutions-modal-button {
+  border-radius: 30px;
+    background-color: #0093b5;
+    border-color: #0093b5;
 }

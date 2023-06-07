@@ -19,21 +19,10 @@ a.navbar-brand {
   margin-left: 5em;
 }
 
-/* .list-students {
-  text-align: center;
-  margin-top: 25px;
-  flex: 1
-} */
-
-ul {
-  list-style-type: none;
-}
-
 form {
   flex-direction: column;
   align-items: center;
   text-align: left;
-  margin-top: 3em;
   flex: 1;
 }
 

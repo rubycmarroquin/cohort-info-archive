@@ -1,22 +1,23 @@
 h4,
 .solution-title a {
   font-size: 18px;
-  /* font-weight: bold; */
   margin: 0;
+  color: #fc7625;
+}
+
+.solution-text {
 }
 
 .solution-row {
-  /* display: flex;
-  flex-direction: column;
-  gap: 5px; */
-  /* border-top: 2px solid black; */
-  border-bottom: 2px solid black;
-  /* background-color: whitesmoke; */
+  border-radius: 10PX;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  background-color: rgb(250, 250, 250);
+  /* background-color: #0093b5; */
+  padding-bottom: 1%;
 }
 
 .solution-content {
-  /* width: 95%;
-  margin: auto; */
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -25,23 +26,30 @@ h4,
 .solution-header {
   display: flex;
   flex-direction: column;
-  gap: 1px;
-  padding-bottom: 4px;
-  border-bottom: 1px dotted black;
+  border-radius: 10px;
   width: 95%;
   margin: auto;
-  background-color: whitesmoke;
+  padding: 1%;
+  /* background-color: rgba(210, 215, 216, 0.408); */
+  background-color: rgba(33, 37, 41, 0.919);
 }
 
 .solution-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: white;
 }
 
-.comments-section {
-  /* background-color: lightblue; */
-  /* display: flex; */
+.solution-title + p {
+  color: white;
+}
+
+.display-comments {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: orange;
 }
 
 .solution-header p {

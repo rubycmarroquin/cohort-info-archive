@@ -17,6 +17,7 @@ const SolutionModal = ({ loadSolutions, id }) => {
         style={{ margin: "0", marginBottom: "4px" }}
         variant="primary"
         onClick={handleShow}
+        className="solutions-modal-button"
       >
         <FontAwesomeIcon icon={faPlus} /> Add Solution
       </Button>

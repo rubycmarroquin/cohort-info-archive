@@ -29,19 +29,26 @@ const ListComments = ({ category, id }) => {
     allComments && (
       <div className="list-comments">
         <div className="comments-container">
-          <h3>{category === "main" ? "Main Thread" : "Comments"}</h3>
+          <h3
+            className={
+              category === "main" ? "main-thread" : "comment-thread-sec"
+            }
+          >
+            {category === "main" ? "Main Thread" : "Comments"}
+          </h3>
           <div className="comments">
             {allComments.map((comment, index) => {
               return (
-                <p key={`${comment.username}+${index}`}>
+                <p
+                  className="comment-item"
+                  key={`${comment.username}+${index}`}
+                >
                   <strong>{comment.username}</strong>: {comment.comment}
                 </p>
               );
             })}
           </div>
         </div>
-
-        {/* form */}
         <Comment category={category} id={id} refresh={loadComments} />
       </div>
     )
